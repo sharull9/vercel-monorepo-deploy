@@ -22,16 +22,16 @@
     "dev": "tsc --watch"
   },
   "dependencies": {
-    "@orpc/client": "^1.14.6",
-    "@orpc/server": "^1.14.6",
+    "@orpc/client": "catalog:",
+    "@orpc/server": "catalog:",
     "@workspace/db": "workspace:*",
-    "drizzle-orm": "1.0.0-rc.4",
-    "hono": "^4.12.27",
-    "zod": "^4.4.3"
+    "drizzle-orm": "catalog:",
+    "hono": "catalog:",
+    "zod": "catalog:"
   },
   "devDependencies": {
     "@workspace/typescript-config": "workspace:*",
-    "tsdown": "^0.22.3",
+    "tsdown": "catalog:",
     "typescript": "catalog:"
   }
 }
