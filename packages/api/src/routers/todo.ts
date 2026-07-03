@@ -1,37 +1,39 @@
 import { db } from "@workspace/db"
-import { userInsertSchema, users, userUpdateSchema } from "@workspace/db/schema"
-import { eq, isNotNull } from "drizzle-orm"
+import { todo, todoInsertSchema, todoUpdateSchema } from "@workspace/db/schema"
+import { eq } from "drizzle-orm"
 import z from "zod"
 import { publicProcedure } from "../index"
 
-export const usersRouter = {
+export const todoRouter = {
   list: publicProcedure
     .route({
       method: "GET",
     })
     .handler(async () => {
-      const results = await db
-        .select()
-        .from(users)
-        .where(isNotNull(users.deleted_at))
+      const results = await db.select().from(todo)
       return results
     }),
   create: publicProcedure
     .route({
       method: "POST",
     })
-    .input(userInsertSchema)
+    .input(todoInsertSchema)
     .handler(async ({ input }) => {
-      const result = await db.insert(users).values(input).returning()
+      const result = await db.insert(todo).values(input).returning()
       return result[0]
     }),
   update: publicProcedure
     .route({
       method: "PUT",
     })
-    .input(userUpdateSchema)
+    .input(todoUpdateSchema.extend({ id: z.number() }))
     .handler(async ({ input }) => {
-      const result = await db.update(users).set(input).returning()
+      const { id, ...data } = input
+      const result = await db
+        .update(todo)
+        .set(data)
+        .where(eq(todo.id, id))
+        .returning()
       return result[0]
     }),
   delete: publicProcedure
@@ -45,8 +47,8 @@ export const usersRouter = {
     )
     .handler(async ({ input }) => {
       const result = await db
-        .delete(users)
-        .where(eq(users.id, input.id))
+        .delete(todo)
+        .where(eq(todo.id, input.id))
         .returning()
       return result[0]
     }),

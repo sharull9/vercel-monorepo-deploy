@@ -5,14 +5,14 @@ import {
   member,
   organization,
   session,
+  todo,
   twoFactor,
   user,
-  users,
 } from "../src/schema"
 
 export default defineRelations(
   {
-    users,
+    todo,
     user,
     session,
     account,
@@ -22,7 +22,7 @@ export default defineRelations(
     twoFactor,
   },
   (r) => ({
-    users: {},
+    todo: {},
     user: {
       sessions: r.many.session(),
       accounts: r.many.account(),

@@ -6,6 +6,7 @@ import { admin } from "better-auth/plugins/admin"
 import { emailOTP } from "better-auth/plugins/email-otp"
 import { organization } from "better-auth/plugins/organization"
 import { twoFactor } from "better-auth/plugins/two-factor"
+import "dotenv/config"
 
 export function createAuth() {
   const plugins = [

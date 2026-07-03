@@ -5,7 +5,7 @@
   "private": true,
   "scripts": {
     "build": "tsc",
-    "dev": "srvx"
+    "dev": "node --watch src/index.ts"
   },
   "dependencies": {
     "@orpc/server": "catalog:",
@@ -17,7 +17,6 @@
   "devDependencies": {
     "@types/node": "catalog:",
     "@workspace/typescript-config": "workspace:*",
-    "srvx": "^0.8.7",
     "typescript": "catalog:"
   }
 }
