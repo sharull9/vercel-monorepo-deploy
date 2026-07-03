@@ -12,7 +12,7 @@ pnpm dlx shadcn@latest add button -c apps/web
 
 This will place the ui components in the `packages/ui/src/components` directory.
 
-## Using components
+### Using components
 
 To use the components in your app, import them from the `ui` package.
 
