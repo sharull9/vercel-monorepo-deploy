@@ -1,0 +1,22 @@
+{
+  "name": "api",
+  "version": "0.0.0",
+  "type": "module",
+  "private": true,
+  "scripts": {
+    "build": "tsc",
+    "dev": "srvx"
+  },
+  "dependencies": {
+    "@orpc/server": "^1.14.6",
+    "@workspace/api": "workspace:*",
+    "dotenv": "^17.4.2",
+    "hono": "^4.8.10"
+  },
+  "devDependencies": {
+    "@types/node": "^20",
+    "@workspace/typescript-config": "workspace:*",
+    "srvx": "^0.8.7",
+    "typescript": "^5.9.3"
+  }
+}

@@ -1,0 +1,34 @@
+{
+  "name": "@workspace/api",
+  "version": "0.0.0",
+  "type": "module",
+  "private": true,
+  "exports": {
+    ".": {
+      "default": "./dist/index.js",
+      "types": "./dist/index.d.ts"
+    },
+    "./routers": {
+      "default": "./dist/routers/index.js",
+      "types": "./dist/routers/index.d.ts"
+    },
+    "./context": {
+      "default": "./dist/context.js",
+      "types": "./dist/context.d.ts"
+    }
+  },
+  "scripts": {
+    "build": "tsdown",
+    "dev": "tsc --watch"
+  },
+  "dependencies": {
+    "@orpc/client": "^1.14.6",
+    "@orpc/server": "^1.14.6",
+    "hono": "^4.12.27"
+  },
+  "devDependencies": {
+    "@workspace/typescript-config": "workspace:*",
+    "tsdown": "^0.22.3",
+    "typescript": "^5.9.3"
+  }
+}
