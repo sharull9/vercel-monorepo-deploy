@@ -32,6 +32,6 @@
   "devDependencies": {
     "@workspace/typescript-config": "workspace:*",
     "tsdown": "^0.22.3",
-    "typescript": "^5.9.3"
+    "typescript": "catalog:"
   }
 }
