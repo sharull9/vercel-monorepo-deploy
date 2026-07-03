@@ -2,6 +2,7 @@ import { onError } from "@orpc/server"
 import { RPCHandler } from "@orpc/server/fetch"
 import { createContext } from "@workspace/api/context"
 import { appRouter } from "@workspace/api/routers"
+import { auth } from "@workspace/auth"
 import "dotenv/config"
 import { Hono } from "hono"
 import { cors } from "hono/cors"
@@ -12,7 +13,7 @@ app.use(
   cors({
     origin: (process.env.CORS_ORIGIN || "").split(","),
     allowMethods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
-    allowHeaders: ["Content-Type", "Authorization", "x-tenant-id"],
+    allowHeaders: ["Content-Type", "Authorization"],
     credentials: true,
   })
 )
@@ -27,6 +28,8 @@ const handler = new RPCHandler(appRouter, {
 app.get("/", (c) => {
   return c.text("Hello From the Hono API!!!")
 })
+
+app.on(["POST", "GET"], "/api/auth/*", (c) => auth.handler(c.req.raw))
 
 app.use("/rpc/*", async (c, next) => {
   const { matched, response } = await handler.handle(c.req.raw, {

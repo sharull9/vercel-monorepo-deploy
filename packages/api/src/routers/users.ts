@@ -1,6 +1,6 @@
 import { db } from "@workspace/db"
 import { userInsertSchema, users, userUpdateSchema } from "@workspace/db/schema"
-import { eq } from "drizzle-orm"
+import { eq, isNotNull } from "drizzle-orm"
 import z from "zod"
 import { publicProcedure } from "../index"
 
@@ -10,7 +10,10 @@ export const usersRouter = {
       method: "GET",
     })
     .handler(async () => {
-      const results = await db.select().from(users)
+      const results = await db
+        .select()
+        .from(users)
+        .where(isNotNull(users.deleted_at))
       return results
     }),
   create: publicProcedure
