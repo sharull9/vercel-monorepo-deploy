@@ -5,13 +5,16 @@
   "private": true,
   "exports": {
     ".": {
-      "default": "./src/index.ts"
+      "default": "./dist/index.js",
+      "types": "./dist/index.d.ts"
     },
     "./schema": {
-      "default": "./src/schema/index.ts"
+      "default": "./dist/schema/index.js",
+      "types": "./dist/schema/index.d.ts"
     },
     "./*": {
-      "default": "./src/*.ts"
+      "default": "./dist/*.js",
+      "types": "./dist/*.d.ts"
     }
   },
   "scripts": {
