@@ -5,9 +5,21 @@
   "scripts": {
     "build": "turbo build",
     "dev": "turbo dev",
+    "start": "turbo start",
+    "dev:web": "turbo -F web dev",
+    "dev:api": "turbo -F api dev",
+    "prod:web": "turbo -F web start",
+    "prod:api": "turbo -F api start",
     "lint": "turbo lint",
     "format": "turbo format",
-    "typecheck": "turbo typecheck"
+    "typecheck": "turbo typecheck",
+    "auth:generate": "turbo -F @workspace/auth auth:generate",
+    "auth:migrate": "turbo -F @workspace/auth auth:migrate",
+    "db:push": "turbo -F @workspace/db db:push",
+    "db:generate": "turbo -F @workspace/db db:generate",
+    "db:migrate": "turbo -F @workspace/db db:migrate",
+    "db:studio": "turbo -F @workspace/db db:migrate",
+    "db:seed": "turbo -F @workspace/db db:migrate"
   },
   "devDependencies": {
     "@workspace/eslint-config": "workspace:*",
