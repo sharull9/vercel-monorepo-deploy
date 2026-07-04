@@ -13,6 +13,7 @@
     "@orpc/server": "catalog:",
     "@workspace/api": "workspace:*",
     "@workspace/auth": "workspace:*",
+    "@workspace/env": "workspace:*",
     "dotenv": "catalog:",
     "hono": "catalog:"
   },

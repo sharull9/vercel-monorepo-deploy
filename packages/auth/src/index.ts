@@ -1,4 +1,5 @@
 import { db } from "@workspace/db"
+import { env } from "@workspace/env/api"
 import { betterAuth } from "better-auth"
 import { drizzleAdapter } from "better-auth/adapters/drizzle"
 import { openAPI } from "better-auth/plugins"
@@ -27,8 +28,7 @@ export function createAuth() {
     database: drizzleAdapter(db, {
       provider: "pg",
     }),
-
-    trustedOrigins: [...(process.env.CORS_ORIGIN || "").split(",")],
+    trustedOrigins: env.CORS_ORIGIN.split(","),
     session: {
       expiresIn: 60 * 20,
       updateAge: 60 * 5,
@@ -36,7 +36,7 @@ export function createAuth() {
     emailAndPassword: {
       enabled: true,
     },
-    secret: process.env.BETTER_AUTH_SECRET,
+    secret: env.BETTER_AUTH_SECRET,
     advanced: {
       defaultCookieAttributes: {
         sameSite: "none",

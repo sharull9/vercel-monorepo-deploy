@@ -18,6 +18,7 @@
   "dependencies": {
     "@neondatabase/serverless": "catalog:",
     "@workspace/db": "workspace:*",
+    "@workspace/env": "workspace:*",
     "better-auth": "catalog:",
     "dotenv": "catalog:",
     "drizzle-orm": "catalog:",

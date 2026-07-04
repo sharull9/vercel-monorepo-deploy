@@ -3,9 +3,10 @@ import { RPCLink } from "@orpc/client/fetch"
 import type { RouterClient } from "@orpc/server"
 import { createTanstackQueryUtils } from "@orpc/tanstack-query"
 import type { AppRouter } from "@workspace/api/routers"
+import { env } from "@workspace/env/web"
 
 const link = new RPCLink({
-  url: `${process.env.NEXT_PUBLIC_SERVER_URL}/rpc`,
+  url: `${env.NEXT_PUBLIC_SERVER_URL}/rpc`,
 })
 
 export const client: RouterClient<AppRouter> = createORPCClient(link)

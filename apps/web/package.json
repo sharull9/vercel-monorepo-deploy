@@ -20,6 +20,7 @@
     "@workspace/api": "workspace:*",
     "@workspace/db": "workspace:*",
     "@workspace/ui": "workspace:*",
+    "@workspace/env": "workspace:*",
     "better-auth": "catalog:",
     "lucide-react": "catalog:",
     "next": "16.2.6",
