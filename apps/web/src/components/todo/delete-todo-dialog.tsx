@@ -1,6 +1,6 @@
 "use client"
 
-import { orpc } from "@/src/lib/orpc"
+import { orpc } from "@/lib/orpc"
 import type { SelectTodoType } from "@workspace/db/schema"
 import { Button } from "@workspace/ui/components/button"
 import {

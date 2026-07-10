@@ -1,7 +1,7 @@
 import {
-  environmentManager,
-  type FetchQueryOptions,
-  QueryClient,
+    environmentManager,
+    type FetchQueryOptions,
+    QueryClient
 } from "@tanstack/react-query"
 
 export function makeQueryClient() {
@@ -12,16 +12,6 @@ export function makeQueryClient() {
         retry: 0,
       },
     },
-    // queryCache: new QueryCache({
-    //     onError: (error, query) => {
-    //       toast.error(`Error: ${error.message}`, {
-    //         action: {
-    //           label: "Retry",
-    //           onClick: query.invalidate,
-    //         },
-    //       });
-    //     },
-    // }),
   })
 }
 

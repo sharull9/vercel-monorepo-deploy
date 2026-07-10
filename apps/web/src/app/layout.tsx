@@ -1,4 +1,4 @@
-import { Providers } from "@/src/providers"
+import { Providers } from "@/providers"
 import "@workspace/ui/globals.css"
 import { cn } from "@workspace/ui/lib/utils"
 import { Geist, Geist_Mono } from "next/font/google"
@@ -12,9 +12,7 @@ const fontMono = Geist_Mono({
 
 export default function RootLayout({
   children,
-}: Readonly<{
-  children: React.ReactNode
-}>) {
+}: Readonly<React.PropsWithChildren>) {
   return (
     <html
       lang="en"

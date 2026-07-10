@@ -25,6 +25,7 @@
     "@orpc/client": "catalog:",
     "@orpc/server": "catalog:",
     "@workspace/db": "workspace:*",
+    "@workspace/filters": "workspace:*",
     "drizzle-orm": "catalog:",
     "hono": "catalog:",
     "zod": "catalog:"

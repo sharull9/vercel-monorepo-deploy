@@ -1,5 +1,5 @@
 "use client"
-import { orpc } from "@/src/lib/orpc"
+import { orpc } from "@/lib/orpc"
 import { useQuery } from "@tanstack/react-query"
 import { Button } from "@workspace/ui/components/button"
 import Link from "next/link"

@@ -1,14 +1,26 @@
-import { QueryProvider } from "@/src/providers/query.provider"
-import { ThemeProvider } from "@/src/providers/theme.provider"
 import { Toaster } from "@workspace/ui/components/sonner"
+import { NuqsProvider } from "@/providers/nuqs.provider"
+import { QueryProvider } from "@/providers/query.provider"
+import { ThemeProvider } from "@/providers/theme.provider"
+import { UIProvider } from "@/providers/ui.provider"
+import { ReactQueryDevtools } from "@tanstack/react-query-devtools"
+import React from "react"
 
-export function Providers({ children }: { children: React.ReactNode }) {
+export function Providers({ children }: React.PropsWithChildren) {
   return (
-    <QueryProvider>
-      <ThemeProvider>
-        {children}
-        <Toaster />
-      </ThemeProvider>
-    </QueryProvider>
+    <ThemeProvider
+      attribute="class"
+      defaultTheme="system"
+      enableSystem
+      disableTransitionOnChange
+    >
+      <NuqsProvider>
+        <QueryProvider>
+          <UIProvider>{children}</UIProvider>
+          <ReactQueryDevtools />
+          <Toaster richColors closeButton />
+        </QueryProvider>
+      </NuqsProvider>
+    </ThemeProvider>
   )
 }

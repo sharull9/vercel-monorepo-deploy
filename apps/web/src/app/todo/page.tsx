@@ -1,11 +1,11 @@
 "use client"
 
-import { DeleteTodoDialog } from "@/src/components/todo/delete-todo-dialog"
-import { TodoFormDialog } from "@/src/components/todo/todo-form-dialog"
-import { TodoTable } from "@/src/components/todo/todo-table"
+import { DeleteTodoDialog } from "@/components/todo/delete-todo-dialog"
+import { TodoFormDialog } from "@/components/todo/todo-form-dialog"
+import { TodoTable } from "@/components/todo/todo-table"
 import type { SelectTodoType } from "@workspace/db/schema"
 import { Button } from "@workspace/ui/components/button"
-import { useState } from "react"
+import { Suspense, useState } from "react"
 
 export default function TodoPage() {
   const [formOpen, setFormOpen] = useState(false)
@@ -27,17 +27,19 @@ export default function TodoPage() {
           Add todo
         </Button>
       </div>
-      <TodoTable
-        onEdit={(todo) => {
-          setFormMode("edit")
-          setSelectedTodo(todo)
-          setFormOpen(true)
-        }}
-        onDelete={(todo) => {
-          setSelectedTodo(todo)
-          setDeleteOpen(true)
-        }}
-      />
+      <Suspense>
+        <TodoTable
+          onEdit={(todo) => {
+            setFormMode("edit")
+            setSelectedTodo(todo)
+            setFormOpen(true)
+          }}
+          onDelete={(todo) => {
+            setSelectedTodo(todo)
+            setDeleteOpen(true)
+          }}
+        />
+      </Suspense>
       <TodoFormDialog
         key={selectedTodo?.id ?? "create"}
         mode={formMode}

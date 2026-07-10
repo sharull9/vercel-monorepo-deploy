@@ -3,12 +3,14 @@ import { todo, todoInsertSchema, todoUpdateSchema } from "@workspace/db/schema"
 import { eq } from "drizzle-orm"
 import z from "zod"
 import { publicProcedure } from "../index"
+import { filters } from "@workspace/filters"
 
 export const todoRouter = {
   list: publicProcedure
     .route({
       method: "GET",
     })
+    .input(filters.query.zod)
     .handler(async () => {
       const results = await db.select().from(todo)
       return results
